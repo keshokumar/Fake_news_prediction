@@ -1,0 +1,10 @@
+tensorflow
+transformers
+pandas
+numpy
+scikit-learn
+seaborn
+matplotlib
+wordcloud
+flask-cors
+
