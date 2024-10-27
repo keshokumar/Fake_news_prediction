@@ -5,16 +5,16 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Copy the requirements file and install dependencies
-COPY requirements.txt ./
+COPY requirements.txt ./           # Make sure this file is in backend/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application files to the container
-COPY src/ ./src/  # Copies src directory correctly
-COPY model/ ./model/  # Copies model directory correctly
-COPY tokenizer.pickle ./  # Copies the tokenizer file
+COPY src/ ./src/                   # Copies src directory correctly
+COPY model/ ./model/               # Copies model directory correctly
+COPY tokenizer.pickle ./           # Copies the tokenizer file
 
 # Expose the port the app runs on
 EXPOSE 5000
 
 # Run the application
-CMD ["python", "src/app.py"]
+CMD ["python", "src/app.py"]      # This should work given the correct file structure
