@@ -9,14 +9,13 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application files to the container
-COPY . .
-
-# Copy the model and tokenizer files to the appropriate locations in the container
-COPY model/fake_news_detection_model_BILSTM.h5 /app/model/fake_news_detection_model_BILSTM.h5
-COPY tokenizer.pickle /app/tokenizer.pickle
+COPY backend/src/ ./src/
+COPY backend/model/ ./model/  # Adjust the path based on your actual structure
+COPY backend/tokenizer.pickle ./  # If the tokenizer is in the backend directory
 
 # Expose the port the app runs on
 EXPOSE 5000
 
 # Run the application
 CMD ["python", "src/app.py"]
+
