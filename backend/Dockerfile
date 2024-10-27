@@ -9,13 +9,12 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application files to the container
-COPY backend/src/ ./src/
-COPY backend/model/ ./model/  # Adjust the path based on your actual structure
-COPY backend/tokenizer.pickle ./  # If the tokenizer is in the backend directory
+COPY ./backend/src/ ./src/  # Make sure to use relative path based on context
+COPY ./backend/model/ ./model/  # Make sure to adjust this if needed
+COPY ./backend/tokenizer.pickle ./  # Copy the tokenizer file
 
 # Expose the port the app runs on
 EXPOSE 5000
 
 # Run the application
 CMD ["python", "src/app.py"]
-
